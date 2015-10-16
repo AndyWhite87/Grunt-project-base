@@ -7,7 +7,7 @@ Preconfigured to run JSHint analysis and Jasmine unit tests (with code coverage 
 ## Setup
 
 Make sure Node and the Grunt CLI are both installed.
-- Node: [https://nodejs.org/]
+- Node: https://nodejs.org/
 - Grunt CLI: with Node installed, run `npm install -g grunt-cli`
 
 Then:

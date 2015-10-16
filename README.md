@@ -10,6 +10,8 @@ Make sure Node and the Grunt CLI are both installed.
 - Node: [https://nodejs.org/]
 - Grunt CLI: with Node installed, run `npm install -g grunt-cli`
 
+Then:
+
 0. Fork this repo.
 
 0. Update package.json to include your project and author details

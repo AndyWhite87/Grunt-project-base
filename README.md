@@ -18,18 +18,28 @@ Then:
 
 0. run npm install to get the configured Grunt packages.
 
-As your project progresses, you'll probably need to update the `concat`, `uglify` and `jasmine` configurations in `gruntfile.js` to account for your project's dependencies, and to update code coverage thresholds to keep code quality high.
+As your project progresses, you'll probably need to update many of the tasks' configurations in `gruntfile.js` to account for your project's dependencies, and to update code coverage thresholds to keep code quality high.
 
 ## Configured tasks
 
 #### grunt watch
 
-Begins watching `gruntfile.js` and all files in the `src` and `test` folders. When any of them change, JSHint will run on the same files, then any Jasmine specs in the `test` folder will run. JSHint and Jasmine results willm be output to the console each time.
+Begins watching `gruntfile.js`, all .less files in the *src/less/* directory and all .js files in the *src/js/* and *test/* directories. When any of them change, the .less files will be built to *css/styles.css* and JSHint will run on the .js files, then any Jasmine specs in the *test/* directory will run. JSHint and Jasmine results will be output to the console each time.
 
 #### grunt test
 
-Runs JSHint on `gruntfile.js` and all files in the `src` and `test` folders, then runs any Jasmine specs in the `test` folder and records code coverage. Also runs the Coveralls task, which only succeeds when running in Travis CI.
+Runs the JavaScript-related portions of `grunt watch`.
+
+#### grunt less
+
+Runs the Less-related portions of `grunt watch`.
+
+#### grunt travis
+
+Intended only for use within Travis CI. Identical to `grunt test`, but calls out to Coveralls to analyse code coverage.
 
 #### grunt build
 
-Runs JSHint, Jasmine and code coverage as above, then concatenates and uglifies files as configured in `gruntfile.js`. Built files appear in a root folder named `dist`.
+Runs JSHint and Jasmine (with code coverage) on the .js files, builds .less files to styles.css, then concatenates and uglifies the .js and .css files. It then runs processhtml on *src/index.html*, and finally uses *src/example.png* as a basis for creating cross-platform favicons and adds references to *index.html*.
+
+Build files are output to a directory named *dist/*, with the exception of *index.html* which is output to the root project directory. This makes it easy to publish project to GitHub Pages.
